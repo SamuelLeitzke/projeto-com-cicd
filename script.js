@@ -22,3 +22,9 @@ function adicionarTarefa() {
 
     campo.value = "";
 }
+
+document.getElementById("tarefa").addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
+        adicionarTarefa();
+    }
+});
