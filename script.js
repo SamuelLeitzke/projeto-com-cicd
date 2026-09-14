@@ -11,6 +11,13 @@ function adicionarTarefa() {
     const item = document.createElement("li");
     item.textContent = texto;
 
+    const botaoRemover = document.createElement("button");
+    botaoRemover.textContent = "Remover";
+    botaoRemover.onclick = function () {
+        item.remove();
+    };
+
+    item.appendChild(botaoRemover);
     lista.appendChild(item);
 
     campo.value = "";
