@@ -1,0 +1,28 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+      - desenvolvimento
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  teste:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Baixar código
+        uses: actions/checkout@v4
+
+      - name: Verificar arquivos do projeto
+        run: |
+          test -f index.html
+          test -f style.css
+          test -f script.js
+          echo "Todos os arquivos foram encontrados!"
+
+      - name: CI concluído
+        run: echo "Testes executados com sucesso!"
