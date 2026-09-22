@@ -1,10 +1,34 @@
+function limparTexto(texto) {
+    return texto.trim();
+}
+
+function tarefaValida(texto) {
+    return limparTexto(texto) !== "";
+}
+
+function criarTarefa(texto) {
+    return {
+        texto: limparTexto(texto)
+    };
+}
+
+function adicionarTarefaNaLista(lista, tarefa) {
+    lista.push(tarefa);
+    return lista;
+}
+
+function removerTarefaDaLista(lista, indice) {
+    lista.splice(indice, 1);
+    return lista;
+}
+
 function adicionarTarefa() {
     const campo = document.getElementById("tarefa");
     const lista = document.getElementById("lista");
 
-    const texto = campo.value.trim();
+    const texto = limparTexto(campo.value);
 
-    if (texto === "") {
+    if (!tarefaValida(texto)) {
         return;
     }
 
@@ -13,6 +37,7 @@ function adicionarTarefa() {
 
     const botaoRemover = document.createElement("button");
     botaoRemover.textContent = "Remover";
+
     botaoRemover.onclick = function () {
         item.remove();
     };
